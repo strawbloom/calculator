@@ -11,14 +11,11 @@ class Calculator extends StatelessWidget {
       // não mostra o banner de debug
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Color(0xffFFD0DB),
         appBar: AppBar(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(60)),
-          ),
           title: Row(
             // centraliza o titulo
             mainAxisAlignment: MainAxisAlignment.center,
-
             children: [
               SvgPicture.asset(
                 'assets/icons/logo.svg',
@@ -38,6 +35,9 @@ class Calculator extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
           ),
         ),
         // redireciona pro body da calculadora
