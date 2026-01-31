@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Calculator extends StatelessWidget {
   const Calculator({super.key});
@@ -11,22 +12,31 @@ class Calculator extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.pink.shade50,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(60)),
+          ),
           title: Row(
             // centraliza o titulo
             mainAxisAlignment: MainAxisAlignment.center,
+
             children: [
-              Text(
-                'Calculator',
-                style: GoogleFonts.jersey15(
-                  textStyle: TextStyle(
-                    fontSize: 40,
-                    color: Colors.pink.shade400,
-                  ),
+              SvgPicture.asset(
+                'assets/icons/logo.svg',
+                width: 32,
+                height: 32,
+                colorFilter: ColorFilter.mode(
+                  Color(0xffD56989),
+                  BlendMode.srcIn,
                 ),
               ),
               // espaçamento entre o titulo e o icone
-              SizedBox(width: 20),
+              SizedBox(width: 16),
+              Text(
+                'Calculator',
+                style: GoogleFonts.jersey15(
+                  textStyle: TextStyle(fontSize: 40, color: Color(0xffD56989)),
+                ),
+              ),
             ],
           ),
         ),
@@ -49,53 +59,55 @@ class _CalculatorBodyState extends State<CalculatorBody> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            children: [
-              ImageIcon(AssetImage('assets/icons/logo.png'), size: 10),
-              Expanded(
-                child: Center(
-                  child: Text(
-                    'C',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 30),
+      child: Container(
+        color: Color(0xffFFD0DB),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      'C',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Center(
-                  child: Text(
-                    'E',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 30),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      'E',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Center(
-                  child: Text(
-                    '=',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 30),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '=',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(child: Text('1')),
-              Expanded(child: Text('2')),
-              Expanded(child: Text('3')),
-            ],
-          ),
-        ],
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(child: Text('1')),
+                Expanded(child: Text('2')),
+                Expanded(child: Text('3')),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
