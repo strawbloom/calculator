@@ -66,6 +66,37 @@ class _CalculatorBodyState extends State<CalculatorBody> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Color(0xffD56989), width: 4),
+                  ),
+                  child: Expanded(
+                    child: Padding(
+                      padding: EdgeInsetsGeometry.only(
+                        top: 8,
+                        right: 16,
+                        bottom: 8,
+                        left: 16,
+                      ),
+                      child: Text(
+                        'Number goes here',
+                        style: GoogleFonts.jersey15(
+                          textStyle: TextStyle(
+                            fontSize: 40,
+                            color: Color(0xffD56989),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
               children: [
                 Expanded(
                   child: Center(
@@ -97,13 +128,182 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                     ),
                   ),
                 ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '*',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
             Row(
               children: [
-                Expanded(child: Text('1')),
-                Expanded(child: Text('2')),
-                Expanded(child: Text('3')),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '7',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '8',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '9',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '/',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '4',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '5',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '6',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '-',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '1',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '2',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '3',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '+',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '0',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '.',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '+',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
