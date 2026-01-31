@@ -7,32 +7,37 @@ class Calculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // não mostra o banner de debug
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Column(
+          backgroundColor: Colors.pink.shade50,
+          title: Row(
+            // centraliza o titulo
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                children: [
-                  Text(
-                    'Calculator',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40),
-                    ),
+              Text(
+                'Calculator',
+                style: GoogleFonts.jersey15(
+                  textStyle: TextStyle(
+                    fontSize: 40,
+                    color: Colors.pink.shade400,
                   ),
-                ],
+                ),
               ),
+              // espaçamento entre o titulo e o icone
+              SizedBox(width: 20),
             ],
           ),
         ),
-        // direciona pro body da calculadora
+        // redireciona pro body da calculadora
         body: CalculatorBody(),
       ),
     );
   }
 }
 
-// body da calculadora
+// inicia o body da calculadora
 class CalculatorBody extends StatefulWidget {
   const CalculatorBody({super.key});
 
@@ -50,6 +55,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
         children: [
           Row(
             children: [
+              ImageIcon(AssetImage('assets/icons/logo.png'), size: 10),
               Expanded(
                 child: Center(
                   child: Text(
