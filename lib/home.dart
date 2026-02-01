@@ -56,6 +56,19 @@ class CalculatorBody extends StatefulWidget {
 }
 
 class _CalculatorBodyState extends State<CalculatorBody> {
+  int number1 = 0;
+  int number2 = 0;
+  int result = 0;
+
+  void showNumber() {
+    Text(
+      '$result',
+      style: GoogleFonts.jersey15(
+        textStyle: TextStyle(fontSize: 40, color: Color(0xffD56989)),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -77,25 +90,32 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                   child: Expanded(
                     child: Padding(
                       padding: EdgeInsetsGeometry.only(
-                        top: 8,
-                        right: 16,
-                        bottom: 8,
-                        left: 16,
+                        top: 16,
+                        right: 32,
+                        bottom: 16,
+                        left: 32,
                       ),
-                      child: Text(
-                        'Number goes here',
-                        style: GoogleFonts.jersey15(
-                          textStyle: TextStyle(
-                            fontSize: 40,
-                            color: Color(0xffD56989),
-                          ),
-                        ),
+                      child: TextButton(
+                        onPressed: () {
+                          print(result = number1 + number2);
+                          Text(
+                            '$result',
+                            style: GoogleFonts.jersey15(
+                              textStyle: TextStyle(
+                                fontSize: 40,
+                                color: Color(0xffD56989),
+                              ),
+                            ),
+                          );
+                        },
+                        child: Text('', style: TextStyle(fontSize: 40)),
                       ),
                     ),
                   ),
                 ),
               ],
             ),
+            SizedBox(height: 30),
             Row(
               children: [
                 Expanded(
@@ -111,7 +131,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                 Expanded(
                   child: Center(
                     child: Text(
-                      'E',
+                      'DEL',
                       style: GoogleFonts.jersey15(
                         textStyle: TextStyle(fontSize: 30),
                       ),
@@ -121,51 +141,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                 Expanded(
                   child: Center(
                     child: Text(
-                      '=',
-                      style: GoogleFonts.jersey15(
-                        textStyle: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '*',
-                      style: GoogleFonts.jersey15(
-                        textStyle: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '7',
-                      style: GoogleFonts.jersey15(
-                        textStyle: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '8',
-                      style: GoogleFonts.jersey15(
-                        textStyle: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      '9',
+                      '%',
                       style: GoogleFonts.jersey15(
                         textStyle: TextStyle(fontSize: 30),
                       ),
@@ -184,6 +160,67 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                 ),
               ],
             ),
+            SizedBox(height: 20),
+            Row(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: TextButton(
+                      onPressed: () {
+                        print(number1 = 7);
+                      },
+                      child: Text(
+                        '7',
+                        style: GoogleFonts.jersey15(
+                          textStyle: TextStyle(fontSize: 30),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: TextButton(
+                      onPressed: () {
+                        print(number2 = 8);
+                      },
+                      child: Text(
+                        '8',
+                        style: GoogleFonts.jersey15(
+                          textStyle: TextStyle(fontSize: 30),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '9',
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: TextButton(
+                      onPressed: () {
+                        print(result = number1 + number2);
+                      },
+                      child: Text(
+                        '*',
+                        style: GoogleFonts.jersey15(
+                          textStyle: TextStyle(fontSize: 30),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
             Row(
               children: [
                 Expanded(
@@ -219,7 +256,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                 Expanded(
                   child: Center(
                     child: Text(
-                      '-',
+                      '+',
                       style: GoogleFonts.jersey15(
                         textStyle: TextStyle(fontSize: 30),
                       ),
@@ -228,6 +265,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                 ),
               ],
             ),
+            SizedBox(height: 20),
             Row(
               children: [
                 Expanded(
@@ -263,7 +301,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                 Expanded(
                   child: Center(
                     child: Text(
-                      '+',
+                      '-',
                       style: GoogleFonts.jersey15(
                         textStyle: TextStyle(fontSize: 30),
                       ),
@@ -272,6 +310,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                 ),
               ],
             ),
+            SizedBox(height: 20),
             Row(
               children: [
                 Expanded(
@@ -297,7 +336,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                 Expanded(
                   child: Center(
                     child: Text(
-                      '+',
+                      '=',
                       style: GoogleFonts.jersey15(
                         textStyle: TextStyle(fontSize: 30),
                       ),
