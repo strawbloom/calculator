@@ -56,19 +56,6 @@ class CalculatorBody extends StatefulWidget {
 }
 
 class _CalculatorBodyState extends State<CalculatorBody> {
-  int number1 = 0;
-  int number2 = 0;
-  int result = 0;
-
-  void showNumber() {
-    Text(
-      '$result',
-      style: GoogleFonts.jersey15(
-        textStyle: TextStyle(fontSize: 40, color: Color(0xffD56989)),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -97,16 +84,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          print(result = number1 + number2);
-                          Text(
-                            '$result',
-                            style: GoogleFonts.jersey15(
-                              textStyle: TextStyle(
-                                fontSize: 40,
-                                color: Color(0xffD56989),
-                              ),
-                            ),
-                          );
+                          print('print');
                         },
                         child: Text('', style: TextStyle(fontSize: 40)),
                       ),
@@ -167,7 +145,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                   child: Center(
                     child: TextButton(
                       onPressed: () {
-                        print(number1 = 7);
+                        print('print');
                       },
                       child: Text(
                         '7',
@@ -182,7 +160,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                   child: Center(
                     child: TextButton(
                       onPressed: () {
-                        print(number2 = 8);
+                        print('print');
                       },
                       child: Text(
                         '8',
@@ -207,7 +185,7 @@ class _CalculatorBodyState extends State<CalculatorBody> {
                   child: Center(
                     child: TextButton(
                       onPressed: () {
-                        print(result = number1 + number2);
+                        print('print');
                       },
                       child: Text(
                         '*',
