@@ -56,12 +56,17 @@ class CalculatorApp extends StatefulWidget {
 }
 
 class _CalculatorAppState extends State<CalculatorApp> {
-  // variaveis
-  double numberOne = 0;
-  double numberTwo = 0;
+  // variavel armazena os dois numeros
+  double firstNumber = 0;
+  double secondNumber = 0;
+  // input => numero que o usuario digita
   var input = '';
-  var result = '';
+  // output => resultado da operação
+  var output = '';
+  // armazena a operação (+, -, *, /)
   var operation = '';
+  var hideInput = false;
+  var outputSize = 38.0;
 
   @override
   Widget build(BuildContext context) {
@@ -91,9 +96,9 @@ class _CalculatorAppState extends State<CalculatorApp> {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          print('print');
+                          print(output);
                         },
-                        child: Text('', style: TextStyle(fontSize: 40)),
+                        child: Text(output, style: TextStyle(fontSize: 40)),
                       ),
                     ),
                   ),
