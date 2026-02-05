@@ -14,7 +14,6 @@ class Calculator extends StatelessWidget {
         backgroundColor: Color(0xffFFD0DB),
         appBar: AppBar(
           title: Row(
-            // centraliza o titulo
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset(
@@ -26,7 +25,6 @@ class Calculator extends StatelessWidget {
                   BlendMode.srcIn,
                 ),
               ),
-              // espaçamento entre o titulo e o icone
               SizedBox(width: 16),
               Text(
                 'Calculator',
@@ -40,14 +38,12 @@ class Calculator extends StatelessWidget {
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
           ),
         ),
-        // redireciona pro body da calculadora
         body: CalculatorApp(),
       ),
     );
   }
 }
 
-// inicia o app da calculadora
 class CalculatorApp extends StatefulWidget {
   const CalculatorApp({super.key});
 
@@ -56,14 +52,10 @@ class CalculatorApp extends StatefulWidget {
 }
 
 class _CalculatorAppState extends State<CalculatorApp> {
-  // variavel armazena os dois numeros
   double firstNumber = 0;
   double secondNumber = 0;
-  // input => numero que o usuario digita
   var input = '';
-  // output => resultado da operação
   var output = '';
-  // armazena a operação (+, -, *, /)
   var operation = '';
   var hideInput = false;
   var outputSize = 38.0;
