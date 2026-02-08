@@ -8,7 +8,6 @@ class Calculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // não mostra o banner de debug
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Color(0xffFFD0DB),
