@@ -86,10 +86,8 @@ class _CalculatorAppState extends State<CalculatorApp> {
                         left: 32,
                       ),
                       child: TextButton(
-                        onPressed: () {
-                          print(output);
-                        },
-                        child: Text(output, style: TextStyle(fontSize: 40)),
+                        onPressed: () {},
+                        child: Text('0', style: TextStyle(fontSize: 40)),
                       ),
                     ),
                   ),
@@ -97,14 +95,6 @@ class _CalculatorAppState extends State<CalculatorApp> {
               ],
             ),
             SizedBox(height: 30),
-            Row(children: []),
-            SizedBox(height: 20),
-            Row(children: []),
-            SizedBox(height: 20),
-            Row(children: []),
-            SizedBox(height: 20),
-            Row(children: []),
-            SizedBox(height: 20),
             Row(children: []),
           ],
         ),
