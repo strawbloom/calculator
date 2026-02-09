@@ -78,13 +78,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                     color: Colors.white,
                     border: Border.all(color: Color(0xffD56989), width: 4),
                   ),
-                  child: Expanded(
-                    child: Center(
-                      child: Text(
-                        input,
-                        style: GoogleFonts.jersey15(
-                          textStyle: TextStyle(fontSize: 50),
-                        ),
+                  child: Center(
+                    child: Text(
+                      input,
+                      style: GoogleFonts.jersey15(
+                        textStyle: TextStyle(fontSize: 50),
                       ),
                     ),
                   ),
@@ -257,7 +255,16 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input += '=';
+                      if (input.isNotEmpty) {
+                        secondNumber = double.parse(input);
+                        output = (firstNumber + secondNumber).toString();
+                        input = output;
+                        hideInput = true;
+                      }
+                      print(input);
+                      print(firstNumber);
+                      print(secondNumber);
+                      print(operation);
                     });
                   },
                   child: Text(
@@ -272,8 +279,16 @@ class _CalculatorAppState extends State<CalculatorApp> {
                   onPressed: () {
                     setState(() {
                       if (input.isNotEmpty) {
-                        input = input.substring(0, input.length - 1);
+                        // transforma o input em double
+                        firstNumber = double.parse(input);
+                        // reseta o input
+                        input = '0';
+                        // passa a operação do botão
+                        operation = '+';
                       }
+                      print(input);
+                      print(firstNumber);
+                      print(operation);
                     });
                   },
                   child: Text(
