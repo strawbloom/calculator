@@ -97,7 +97,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input += '7';
+                      if (input.isNotEmpty) {
+                        input += '7';
+                      } else if (input.isEmpty) {
+                        input = '7';
+                      }
                     });
                   },
                   child: Text(
@@ -257,8 +261,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
                     setState(() {
                       if (input.isNotEmpty) {
                         secondNumber = double.parse(input);
-                        output = (firstNumber + secondNumber).toString();
-                        input = output;
+                        input = (firstNumber + secondNumber).toString();
                         hideInput = true;
                       }
                       print(input);
