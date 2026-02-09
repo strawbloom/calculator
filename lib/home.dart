@@ -53,7 +53,7 @@ class CalculatorApp extends StatefulWidget {
 class _CalculatorAppState extends State<CalculatorApp> {
   double firstNumber = 0;
   double secondNumber = 0;
-  var input = '0';
+  var input = '';
   var output = '';
   var operation = '';
   var hideInput = false;
@@ -99,7 +99,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input = '7';
+                      input += '7';
                     });
                   },
                   child: Text(
@@ -111,7 +111,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ),
                 SizedBox(width: 15),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      input += '8';
+                    });
+                  },
                   child: Text(
                     '8',
                     style: GoogleFonts.jersey15(
@@ -121,7 +125,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ),
                 SizedBox(width: 15),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      input += '9';
+                    });
+                  },
                   child: Text(
                     '9',
                     style: GoogleFonts.jersey15(
@@ -137,7 +145,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      input += '4';
+                    });
+                  },
                   child: Text(
                     '4',
                     style: GoogleFonts.jersey15(
@@ -147,7 +159,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ),
                 SizedBox(width: 15),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      input += '5';
+                    });
+                  },
                   child: Text(
                     '5',
                     style: GoogleFonts.jersey15(
@@ -157,7 +173,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ),
                 SizedBox(width: 15),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      input += '6';
+                    });
+                  },
                   child: Text(
                     '6',
                     style: GoogleFonts.jersey15(
@@ -173,7 +193,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      input += '1';
+                    });
+                  },
                   child: Text(
                     '1',
                     style: GoogleFonts.jersey15(
@@ -183,7 +207,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ),
                 SizedBox(width: 15),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      input += '2';
+                    });
+                  },
                   child: Text(
                     '2',
                     style: GoogleFonts.jersey15(
@@ -193,7 +221,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ),
                 SizedBox(width: 15),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      input += '3';
+                    });
+                  },
                   child: Text(
                     '3',
                     style: GoogleFonts.jersey15(
@@ -209,7 +241,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      input += '0';
+                    });
+                  },
                   child: Text(
                     '0',
                     style: GoogleFonts.jersey15(
@@ -219,7 +255,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ),
                 SizedBox(width: 15),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      input += '=';
+                    });
+                  },
                   child: Text(
                     '=',
                     style: GoogleFonts.jersey15(
@@ -229,7 +269,13 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ),
                 SizedBox(width: 15),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      if (input.isNotEmpty) {
+                        input = input.substring(0, input.length - 1);
+                      }
+                    });
+                  },
                   child: Text(
                     '+',
                     style: GoogleFonts.jersey15(
