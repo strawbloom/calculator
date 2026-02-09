@@ -80,22 +80,166 @@ class _CalculatorAppState extends State<CalculatorApp> {
                   child: Expanded(
                     child: Padding(
                       padding: EdgeInsetsGeometry.only(
-                        top: 16,
-                        right: 32,
-                        bottom: 16,
-                        left: 32,
+                        top: 0,
+                        right: 64,
+                        bottom: 0,
+                        left: 64,
                       ),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text('0', style: TextStyle(fontSize: 40)),
+                      child: Text(
+                        '0',
+                        style: GoogleFonts.jersey15(
+                          textStyle: TextStyle(fontSize: 50),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 30),
-            Row(children: []),
+            SizedBox(height: 15),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    '7',
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 15),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    '8',
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 15),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    '9',
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 15),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    '4',
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 15),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    '5',
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 15),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    '6',
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 15),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    '1',
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 15),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    '2',
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 15),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    '3',
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 15),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    '0',
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 15),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    '=',
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 15),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    '+',
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
