@@ -53,7 +53,7 @@ class CalculatorApp extends StatefulWidget {
 class _CalculatorAppState extends State<CalculatorApp> {
   double firstNumber = 0;
   double secondNumber = 0;
-  var input = '';
+  var input = '0';
   var output = '';
   var operation = '';
   var hideInput = false;
@@ -73,20 +73,15 @@ class _CalculatorAppState extends State<CalculatorApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
+                  width: 280,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: Color(0xffD56989), width: 4),
                   ),
                   child: Expanded(
-                    child: Padding(
-                      padding: EdgeInsetsGeometry.only(
-                        top: 0,
-                        right: 64,
-                        bottom: 0,
-                        left: 64,
-                      ),
+                    child: Center(
                       child: Text(
-                        '0',
+                        input,
                         style: GoogleFonts.jersey15(
                           textStyle: TextStyle(fontSize: 50),
                         ),
@@ -102,7 +97,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      input = '7';
+                    });
+                  },
                   child: Text(
                     '7',
                     style: GoogleFonts.jersey15(
