@@ -15,20 +15,20 @@ class Calculator extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(
-                'assets/icons/logo.svg',
-                width: 32,
-                height: 32,
-                colorFilter: ColorFilter.mode(
-                  Color(0xffD56989),
-                  BlendMode.srcIn,
-                ),
-              ),
-              SizedBox(width: 16),
+              // SvgPicture.asset(
+              //   'assets/icons/logo.svg',
+              //   width: 32,
+              //   height: 32,
+              //   colorFilter: ColorFilter.mode(
+              //     Color(0xffD56989),
+              //     BlendMode.srcIn,
+              //   ),
+              // ),
+              // SizedBox(width: 16),
               Text(
                 'Calculator',
                 style: GoogleFonts.jersey15(
-                  textStyle: TextStyle(fontSize: 40, color: Color(0xffD56989)),
+                  textStyle: TextStyle(fontSize: 50, color: Color(0xffD56989)),
                 ),
               ),
             ],
