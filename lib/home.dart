@@ -51,13 +51,84 @@ class CalculatorApp extends StatefulWidget {
 }
 
 class _CalculatorAppState extends State<CalculatorApp> {
-  double firstNumber = 0;
-  double secondNumber = 0;
-  var input = '';
-  var output = '';
-  var operation = '';
-  var hideInput = false;
-  var outputSize = 38.0;
+  String firstNumber = '';
+  String secondNumber = '';
+  String output = '0';
+  String operation = '';
+
+  void onButtonTap(String buttonText) {
+    //C -> limpa o output
+    if (buttonText == "C") {
+      firstNumber = '';
+      secondNumber = '';
+      output = '0';
+      operation = '';
+      //verifica qual a operação
+    } else if (buttonText == "+" ||
+        buttonText == "-" ||
+        buttonText == "/" ||
+        buttonText == "X") {
+      firstNumber = output;
+      operation = buttonText;
+      output = '';
+    } else if (buttonText == ".") {
+      //verifica se o numero ja é decimal
+      if (output.contains(".")) {
+        print("ja é decimal");
+      } else {
+        //
+        output = output + buttonText;
+      }
+    } else if (buttonText == "=") {
+      secondNumber = output;
+      //verifica se nao tem nenhuma variavel vazia
+      if (firstNumber != '' && secondNumber != '' && operation != '') {
+        secondNumber = output;
+        //operação -> soma
+        if (operation == '+') {
+          output = (double.parse(firstNumber) + double.parse(secondNumber))
+              .toString();
+          //operação -> subtração
+        } else if (operation == '-') {
+          output = (double.parse(firstNumber) - double.parse(secondNumber))
+              .toString();
+          //operação -> multiplicação
+        } else if (operation == 'X') {
+          output = (double.parse(firstNumber) * double.parse(secondNumber))
+              .toString();
+        } //operação -> divisão
+        else if (operation == '/') {
+          output = (double.parse(firstNumber) / double.parse(secondNumber))
+              .toString();
+        }
+      }
+    } else {
+      output = output + buttonText;
+    }
+
+    print(firstNumber);
+    print(secondNumber);
+    print(output);
+    print(operation);
+
+    setState(() {
+      output = output;
+    });
+  }
+
+  Widget buttonPressed(String buttonText) {
+    return ElevatedButton(
+      onPressed: () {
+        onButtonTap(buttonText);
+      },
+      child: Text(
+        buttonText,
+        style: GoogleFonts.jersey15(
+          textStyle: TextStyle(fontSize: 40, color: Colors.black),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +151,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
                   ),
                   child: Center(
                     child: Text(
-                      input,
+                      output,
                       style: GoogleFonts.jersey15(
                         textStyle: TextStyle(fontSize: 50),
                       ),
@@ -94,60 +165,13 @@ class _CalculatorAppState extends State<CalculatorApp> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      // limpa o zero -> passa o numero do botão clicado
-                      if (input == '0') {
-                        input = '7';
-                      } else {
-                        input += '7';
-                      }
-                    });
-                  },
-                  child: Text(
-                    '7',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
-                    ),
-                  ),
-                ),
+                buttonPressed('7'),
                 SizedBox(width: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if (input == '0') {
-                        input = '8';
-                      } else {
-                        input += '8';
-                      }
-                    });
-                  },
-                  child: Text(
-                    '8',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
-                    ),
-                  ),
-                ),
+                buttonPressed('8'),
                 SizedBox(width: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if (input == '0') {
-                        input = '9';
-                      } else {
-                        input += '9';
-                      }
-                    });
-                  },
-                  child: Text(
-                    '9',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
-                    ),
-                  ),
-                ),
+                buttonPressed('9'),
+                SizedBox(width: 15),
+                buttonPressed('-'),
               ],
             ),
             SizedBox(height: 15),
@@ -155,59 +179,13 @@ class _CalculatorAppState extends State<CalculatorApp> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if (input == '0') {
-                        input = '4';
-                      } else {
-                        input += '4';
-                      }
-                    });
-                  },
-                  child: Text(
-                    '4',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
-                    ),
-                  ),
-                ),
+                buttonPressed('4'),
                 SizedBox(width: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if (input == '0') {
-                        input = '5';
-                      } else {
-                        input += '5';
-                      }
-                    });
-                  },
-                  child: Text(
-                    '5',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
-                    ),
-                  ),
-                ),
+                buttonPressed('5'),
                 SizedBox(width: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if (input == '0') {
-                        input = '6';
-                      } else {
-                        input += '6';
-                      }
-                    });
-                  },
-                  child: Text(
-                    '6',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
-                    ),
-                  ),
-                ),
+                buttonPressed('6'),
+                SizedBox(width: 15),
+                buttonPressed('+'),
               ],
             ),
             SizedBox(height: 15),
@@ -215,59 +193,13 @@ class _CalculatorAppState extends State<CalculatorApp> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if (input == '0') {
-                        input = '1';
-                      } else {
-                        input += '1';
-                      }
-                    });
-                  },
-                  child: Text(
-                    '1',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
-                    ),
-                  ),
-                ),
+                buttonPressed('1'),
                 SizedBox(width: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if (input == '0') {
-                        input = '2';
-                      } else {
-                        input += '2';
-                      }
-                    });
-                  },
-                  child: Text(
-                    '2',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
-                    ),
-                  ),
-                ),
+                buttonPressed('2'),
                 SizedBox(width: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if (input == '0') {
-                        input = '3';
-                      } else {
-                        input += '3';
-                      }
-                    });
-                  },
-                  child: Text(
-                    '3',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
-                    ),
-                  ),
-                ),
+                buttonPressed('3'),
+                SizedBox(width: 15),
+                buttonPressed('*'),
               ],
             ),
             SizedBox(height: 15),
@@ -275,69 +207,13 @@ class _CalculatorAppState extends State<CalculatorApp> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if (input == '0') {
-                        input = '0';
-                      } else {
-                        input += '0';
-                      }
-                    });
-                  },
-                  child: Text(
-                    '0',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
-                    ),
-                  ),
-                ),
+                buttonPressed('0'),
                 SizedBox(width: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if (input.isNotEmpty) {
-                        secondNumber = double.parse(input);
-                        input = (firstNumber + secondNumber).toString();
-                        hideInput = true;
-                      }
-                      print(input);
-                      print(firstNumber);
-                      print(secondNumber);
-                      print(operation);
-                    });
-                  },
-                  child: Text(
-                    '=',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
-                    ),
-                  ),
-                ),
+                buttonPressed('.'),
                 SizedBox(width: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if (input.isNotEmpty) {
-                        // transforma o input em double
-                        firstNumber = double.parse(input);
-                        // reseta o input
-                        input = '0';
-                        // passa a operação do botão
-                        operation = '+';
-                      }
-                      print(input);
-                      print(firstNumber);
-                      print(operation);
-                    });
-                  },
-                  child: Text(
-                    '+',
-                    style: GoogleFonts.jersey15(
-                      textStyle: TextStyle(fontSize: 40, color: Colors.black),
-                    ),
-                  ),
-                ),
+                buttonPressed('='),
+                SizedBox(width: 15),
+                buttonPressed('C'),
               ],
             ),
           ],
