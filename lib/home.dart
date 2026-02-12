@@ -74,7 +74,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
     } else if (buttonText == ".") {
       //verifica se o numero ja é decimal
       if (output.contains(".")) {
-        print("ja é decimal");
+        return;
       } else {
         // adiciona decimal
         output += buttonText;
@@ -100,11 +100,13 @@ class _CalculatorAppState extends State<CalculatorApp> {
         else if (operation == '/') {
           output = (double.parse(firstNumber) / double.parse(secondNumber))
               .toString();
-        } else if (double.parse(output) % 1 == 0) {
-          int.parse(output).toString();
-        } else {
-          output.toString();
         }
+      }
+      //verifica se o numero é inteiro -> se for remove o .0
+      if (double.parse(output) % 1 == 0) {
+        output = int.parse(output).toString();
+      } else {
+        output = int.parse(output).toString();
       }
     } else {
       if (output == '0') {
@@ -172,11 +174,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               buttonPressed('7'),
-              SizedBox(width: 15),
+              SizedBox(width: 10),
               buttonPressed('8'),
-              SizedBox(width: 15),
+              SizedBox(width: 10),
               buttonPressed('9'),
-              SizedBox(width: 15),
+              SizedBox(width: 10),
               buttonPressed('-'),
             ],
           ),
@@ -186,11 +188,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               buttonPressed('4'),
-              SizedBox(width: 15),
+              SizedBox(width: 10),
               buttonPressed('5'),
-              SizedBox(width: 15),
+              SizedBox(width: 10),
               buttonPressed('6'),
-              SizedBox(width: 15),
+              SizedBox(width: 10),
               buttonPressed('+'),
             ],
           ),
@@ -200,11 +202,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               buttonPressed('1'),
-              SizedBox(width: 15),
+              SizedBox(width: 10),
               buttonPressed('2'),
-              SizedBox(width: 15),
+              SizedBox(width: 10),
               buttonPressed('3'),
-              SizedBox(width: 15),
+              SizedBox(width: 10),
               buttonPressed('X'),
             ],
           ),
@@ -214,11 +216,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               buttonPressed('0'),
-              SizedBox(width: 15),
+              SizedBox(width: 10),
               buttonPressed('.'),
-              SizedBox(width: 15),
+              SizedBox(width: 10),
               buttonPressed('='),
-              SizedBox(width: 15),
+              SizedBox(width: 10),
               buttonPressed('C'),
             ],
           ),
