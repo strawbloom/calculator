@@ -76,8 +76,8 @@ class _CalculatorAppState extends State<CalculatorApp> {
       if (output.contains(".")) {
         print("ja é decimal");
       } else {
-        //
-        output = output + buttonText;
+        // adiciona decimal
+        output += buttonText;
       }
     } else if (buttonText == "=") {
       secondNumber = output;
@@ -100,10 +100,18 @@ class _CalculatorAppState extends State<CalculatorApp> {
         else if (operation == '/') {
           output = (double.parse(firstNumber) / double.parse(secondNumber))
               .toString();
+        } else if (double.parse(output) % 1 == 0) {
+          int.parse(output).toString();
+        } else {
+          output.toString();
         }
       }
     } else {
-      output = output + buttonText;
+      if (output == '0') {
+        output = buttonText;
+      } else {
+        output += buttonText;
+      }
     }
 
     print(firstNumber);
@@ -133,91 +141,88 @@ class _CalculatorAppState extends State<CalculatorApp> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        color: Color(0xffFFD0DB),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 280,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Color(0xffD56989), width: 4),
-                  ),
-                  child: Center(
-                    child: Text(
-                      output,
-                      style: GoogleFonts.jersey15(
-                        textStyle: TextStyle(fontSize: 50),
-                      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 280,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Color(0xffD56989), width: 4),
+                ),
+                child: Center(
+                  child: Text(
+                    output,
+                    style: GoogleFonts.jersey15(
+                      textStyle: TextStyle(fontSize: 50),
                     ),
                   ),
                 ),
-              ],
-            ),
-            SizedBox(height: 15),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                buttonPressed('7'),
-                SizedBox(width: 15),
-                buttonPressed('8'),
-                SizedBox(width: 15),
-                buttonPressed('9'),
-                SizedBox(width: 15),
-                buttonPressed('-'),
-              ],
-            ),
-            SizedBox(height: 15),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                buttonPressed('4'),
-                SizedBox(width: 15),
-                buttonPressed('5'),
-                SizedBox(width: 15),
-                buttonPressed('6'),
-                SizedBox(width: 15),
-                buttonPressed('+'),
-              ],
-            ),
-            SizedBox(height: 15),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                buttonPressed('1'),
-                SizedBox(width: 15),
-                buttonPressed('2'),
-                SizedBox(width: 15),
-                buttonPressed('3'),
-                SizedBox(width: 15),
-                buttonPressed('*'),
-              ],
-            ),
-            SizedBox(height: 15),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                buttonPressed('0'),
-                SizedBox(width: 15),
-                buttonPressed('.'),
-                SizedBox(width: 15),
-                buttonPressed('='),
-                SizedBox(width: 15),
-                buttonPressed('C'),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          SizedBox(height: 15),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              buttonPressed('7'),
+              SizedBox(width: 15),
+              buttonPressed('8'),
+              SizedBox(width: 15),
+              buttonPressed('9'),
+              SizedBox(width: 15),
+              buttonPressed('-'),
+            ],
+          ),
+          SizedBox(height: 15),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              buttonPressed('4'),
+              SizedBox(width: 15),
+              buttonPressed('5'),
+              SizedBox(width: 15),
+              buttonPressed('6'),
+              SizedBox(width: 15),
+              buttonPressed('+'),
+            ],
+          ),
+          SizedBox(height: 15),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              buttonPressed('1'),
+              SizedBox(width: 15),
+              buttonPressed('2'),
+              SizedBox(width: 15),
+              buttonPressed('3'),
+              SizedBox(width: 15),
+              buttonPressed('X'),
+            ],
+          ),
+          SizedBox(height: 15),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              buttonPressed('0'),
+              SizedBox(width: 15),
+              buttonPressed('.'),
+              SizedBox(width: 15),
+              buttonPressed('='),
+              SizedBox(width: 15),
+              buttonPressed('C'),
+            ],
+          ),
+        ],
       ),
     );
   }
