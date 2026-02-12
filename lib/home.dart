@@ -105,8 +105,10 @@ class _CalculatorAppState extends State<CalculatorApp> {
       //verifica se o numero é inteiro -> se for remove o .0
       if (double.parse(output) % 1 == 0) {
         output = int.parse(output).toString();
+        print(output is int);
       } else {
-        output = int.parse(output).toString();
+        output = output.toString();
+        print(output is double);
       }
     } else {
       if (output == '0') {
