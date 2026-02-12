@@ -97,10 +97,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (input.isNotEmpty) {
-                        input += '7';
-                      } else if (input.isEmpty) {
+                      // limpa o zero -> passa o numero do botão clicado
+                      if (input == '0') {
                         input = '7';
+                      } else {
+                        input += '7';
                       }
                     });
                   },
@@ -115,7 +116,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input += '8';
+                      if (input == '0') {
+                        input = '8';
+                      } else {
+                        input += '8';
+                      }
                     });
                   },
                   child: Text(
@@ -129,7 +134,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input += '9';
+                      if (input == '0') {
+                        input = '9';
+                      } else {
+                        input += '9';
+                      }
                     });
                   },
                   child: Text(
@@ -149,7 +158,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input += '4';
+                      if (input == '0') {
+                        input = '4';
+                      } else {
+                        input += '4';
+                      }
                     });
                   },
                   child: Text(
@@ -163,7 +176,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input += '5';
+                      if (input == '0') {
+                        input = '5';
+                      } else {
+                        input += '5';
+                      }
                     });
                   },
                   child: Text(
@@ -177,7 +194,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input += '6';
+                      if (input == '0') {
+                        input = '6';
+                      } else {
+                        input += '6';
+                      }
                     });
                   },
                   child: Text(
@@ -197,7 +218,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input += '1';
+                      if (input == '0') {
+                        input = '1';
+                      } else {
+                        input += '1';
+                      }
                     });
                   },
                   child: Text(
@@ -211,7 +236,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input += '2';
+                      if (input == '0') {
+                        input = '2';
+                      } else {
+                        input += '2';
+                      }
                     });
                   },
                   child: Text(
@@ -225,7 +254,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input += '3';
+                      if (input == '0') {
+                        input = '3';
+                      } else {
+                        input += '3';
+                      }
                     });
                   },
                   child: Text(
@@ -245,7 +278,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input += '0';
+                      if (input == '0') {
+                        input = '0';
+                      } else {
+                        input += '0';
+                      }
                     });
                   },
                   child: Text(
