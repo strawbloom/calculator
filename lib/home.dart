@@ -57,7 +57,6 @@ class _CalculatorAppState extends State<CalculatorApp> {
   String operation = '';
 
   void onButtonTap(String buttonText) {
-    //C -> limpa o output
     if (buttonText == "C") {
       firstNumber = '';
       secondNumber = '';
