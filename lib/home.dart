@@ -79,7 +79,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
       }
     } else if (buttonText == "=") {
       secondNumber = output;
-      //verifica se nao tem nenhuma variavel vazia
+nao importa onde eu vá ta todo lugar congelando 
       if (firstNumber != '' && secondNumber != '' && operation != '') {
         secondNumber = output;
         //operação -> soma
