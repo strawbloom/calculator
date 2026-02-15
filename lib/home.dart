@@ -71,7 +71,6 @@ class _CalculatorAppState extends State<CalculatorApp> {
       operation = buttonText;
       output = '';
     } else if (buttonText == ".") {
-      //verifica se o numero ja é decimal
       if (output.contains(".")) {
         return;
       } else {
