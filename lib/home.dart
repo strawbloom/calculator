@@ -82,7 +82,6 @@ class _CalculatorAppState extends State<CalculatorApp> {
 nao importa onde eu vá ta todo lugar congelando 
       if (firstNumber != '' && secondNumber != '' && operation != '') {
         secondNumber = output;
-        //operação -> soma
         if (operation == '+') {
           output = (double.parse(firstNumber) + double.parse(secondNumber))
               .toString();
