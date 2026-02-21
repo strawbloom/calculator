@@ -62,7 +62,6 @@ class _CalculatorAppState extends State<CalculatorApp> {
       secondNumber = '';
       output = '0';
       operation = '';
-      //verifica qual a operação
     } else if (buttonText == "+" ||
         buttonText == "-" ||
         buttonText == "/" ||
