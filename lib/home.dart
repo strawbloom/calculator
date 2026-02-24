@@ -78,7 +78,6 @@ class _CalculatorAppState extends State<CalculatorApp> {
       }
     } else if (buttonText == "=") {
       secondNumber = output;
-nao importa onde eu vá ta todo lugar congelando 
       if (firstNumber != '' && secondNumber != '' && operation != '') {
         secondNumber = output;
         if (operation == '+') {
