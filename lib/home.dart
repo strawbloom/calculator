@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Calculator extends StatelessWidget {
   const Calculator({super.key});
@@ -57,71 +56,73 @@ class _CalculatorAppState extends State<CalculatorApp> {
   String operation = '';
 
   void onButtonTap(String buttonText) {
-    if (buttonText == "C") {
-      firstNumber = '';
-      secondNumber = '';
-      output = '0';
-      operation = '';
-    } else if (buttonText == "+" ||
-        buttonText == "-" ||
-        buttonText == "/" ||
-        buttonText == "X") {
-      firstNumber = output;
-      operation = buttonText;
-      output = '';
-    } else if (buttonText == ".") {
-      if (output.contains(".")) {
-        return;
-      } else {
-        // adiciona decimal
-        output += buttonText;
-      }
-    } else if (buttonText == "=") {
-      secondNumber = output;
-      if (firstNumber != '' && secondNumber != '' && operation != '') {
+    setState(() {
+      if (buttonText == "C") {
+        firstNumber = '';
+        secondNumber = '';
+        output = '0';
+        operation = '';
+      } else if (buttonText == "+" ||
+          buttonText == "-" ||
+          buttonText == "/" ||
+          buttonText == "X") {
+        firstNumber = output;
+        operation = buttonText;
+        output = '';
+      } else if (buttonText == ".") {
+        if (output.contains(".")) {
+          return;
+        } else {
+          // adiciona decimal
+          output += buttonText;
+        }
+      } else if (buttonText == "=") {
         secondNumber = output;
-        if (operation == '+') {
-          output = (double.parse(firstNumber) + double.parse(secondNumber))
-              .toString();
-          //operação -> subtração
-        } else if (operation == '-') {
-          output = (double.parse(firstNumber) - double.parse(secondNumber))
-              .toString();
-          //operação -> multiplicação
-        } else if (operation == 'X') {
-          output = (double.parse(firstNumber) * double.parse(secondNumber))
-              .toString();
-        } //operação -> divisão
-        else if (operation == '/') {
-          output = (double.parse(firstNumber) / double.parse(secondNumber))
-              .toString();
+        if (firstNumber != '' && secondNumber != '' && operation != '') {
+          secondNumber = output;
+          if (operation == '+') {
+            output = (double.parse(firstNumber) + double.parse(secondNumber))
+                .toString();
+            //operação -> subtração
+          } else if (operation == '-') {
+            output = (double.parse(firstNumber) - double.parse(secondNumber))
+                .toString();
+            //operação -> multiplicação
+          } else if (operation == 'X') {
+            output = (double.parse(firstNumber) * double.parse(secondNumber))
+                .toString();
+          } //operação -> divisão
+          else if (operation == '/') {
+            output = (double.parse(firstNumber) / double.parse(secondNumber))
+                .toString();
+          }
+        }
+        double result = double.parse(output);
+
+        if (result % 1 == 0) {
+          output = result.toInt().toString();
+        } else {
+          output = output.toString();
+          print(output is double);
+        }
+      } else {
+        if (output == '0') {
+          output = buttonText;
+        } else {
+          output += buttonText;
         }
       }
-      //verifica se o numero é inteiro -> se for remove o .0
-      if (double.parse(output) % 1 == 0) {
-        output = int.parse(output).toString();
-        print(output is int);
-      } else {
-        output = output.toString();
-        print(output is double);
-      }
-    } else {
-      if (output == '0') {
-        output = buttonText;
-      } else {
-        output += buttonText;
-      }
-    }
 
-    print(firstNumber);
-    print(secondNumber);
-    print(output);
-    print(operation);
-
-    setState(() {
-      output = output;
+      print(firstNumber);
+      print(secondNumber);
+      print(output);
+      print(operation);
     });
   }
+
+  void calculate() {}
+  void clear() {}
+  void setOperation(String op) {}
 
   Widget buttonPressed(String buttonText) {
     return ElevatedButton(
@@ -141,12 +142,12 @@ class _CalculatorAppState extends State<CalculatorApp> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
                 width: 280,
@@ -165,60 +166,47 @@ class _CalculatorAppState extends State<CalculatorApp> {
               ),
             ],
           ),
-          SizedBox(height: 15),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              buttonPressed('7'),
-              SizedBox(width: 10),
-              buttonPressed('8'),
-              SizedBox(width: 10),
-              buttonPressed('9'),
-              SizedBox(width: 10),
-              buttonPressed('-'),
+              SizedBox(width: 60, height: 60, child: buttonPressed('7')),
+              SizedBox(width: 60, height: 60, child: buttonPressed('8')),
+              SizedBox(width: 60, height: 60, child: buttonPressed('9')),
+              SizedBox(width: 60, height: 60, child: buttonPressed('-')),
             ],
           ),
-          SizedBox(height: 15),
+
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              buttonPressed('4'),
-              SizedBox(width: 10),
-              buttonPressed('5'),
-              SizedBox(width: 10),
-              buttonPressed('6'),
-              SizedBox(width: 10),
-              buttonPressed('+'),
+              SizedBox(width: 60, height: 60, child: buttonPressed('4')),
+              SizedBox(width: 60, height: 60, child: buttonPressed('5')),
+              SizedBox(width: 60, height: 60, child: buttonPressed('6')),
+              SizedBox(width: 60, height: 60, child: buttonPressed('+')),
             ],
           ),
-          SizedBox(height: 15),
+
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              buttonPressed('1'),
-              SizedBox(width: 10),
-              buttonPressed('2'),
-              SizedBox(width: 10),
-              buttonPressed('3'),
-              SizedBox(width: 10),
-              buttonPressed('X'),
+              SizedBox(width: 60, height: 60, child: buttonPressed('1')),
+              SizedBox(width: 60, height: 60, child: buttonPressed('2')),
+              SizedBox(width: 60, height: 60, child: buttonPressed('3')),
+              SizedBox(width: 60, height: 60, child: buttonPressed('X')),
             ],
           ),
-          SizedBox(height: 15),
+
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              buttonPressed('0'),
-              SizedBox(width: 10),
-              buttonPressed('.'),
-              SizedBox(width: 10),
-              buttonPressed('='),
-              SizedBox(width: 10),
-              buttonPressed('C'),
+              SizedBox(width: 60, height: 60, child: buttonPressed('0')),
+              SizedBox(width: 60, height: 60, child: buttonPressed('.')),
+              SizedBox(width: 60, height: 60, child: buttonPressed('=')),
+              SizedBox(width: 60, height: 60, child: buttonPressed('C')),
             ],
           ),
         ],
