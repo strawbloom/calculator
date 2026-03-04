@@ -14,16 +14,6 @@ class Calculator extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // SvgPicture.asset(
-              //   'assets/icons/logo.svg',
-              //   width: 32,
-              //   height: 32,
-              //   colorFilter: ColorFilter.mode(
-              //     Color(0xffD56989),
-              //     BlendMode.srcIn,
-              //   ),
-              // ),
-              // SizedBox(width: 16),
               Text(
                 'Calculator',
                 style: GoogleFonts.jersey15(
@@ -50,9 +40,11 @@ class CalculatorApp extends StatefulWidget {
 }
 
 class _CalculatorAppState extends State<CalculatorApp> {
+  static const Color kPink = Color(0xffD56989);
+
   String firstNumber = '';
   String secondNumber = '';
-  String output = '0';
+  String display = '0';
   String operation = '';
 
   void onButtonTap(String buttonText) {
@@ -60,75 +52,86 @@ class _CalculatorAppState extends State<CalculatorApp> {
       if (buttonText == "C") {
         firstNumber = '';
         secondNumber = '';
-        output = '0';
+        display = '0';
         operation = '';
+      } else if (buttonText == "DEL") {
+        deleteLastCharacter();
       } else if (buttonText == "+" ||
           buttonText == "-" ||
           buttonText == "/" ||
-          buttonText == "X") {
-        firstNumber = output;
+          buttonText == "X" ||
+          buttonText == "%") {
+        if (firstNumber != '' && display != '') {
+          _calculate();
+        }
+        firstNumber = display;
         operation = buttonText;
-        output = '';
+        display = '';
       } else if (buttonText == ".") {
-        if (output.contains(".")) {
-          return;
-        } else {
-          // adiciona decimal
-          output += buttonText;
+        if (!display.contains(".")) {
+          display = display.isEmpty ? '0.' : '$display.';
         }
-      } else if (buttonText == "=") {
-        secondNumber = output;
-        if (firstNumber != '' && secondNumber != '' && operation != '') {
-          secondNumber = output;
-          if (operation == '+') {
-            output = (double.parse(firstNumber) + double.parse(secondNumber))
-                .toString();
-            //operação -> subtração
-          } else if (operation == '-') {
-            output = (double.parse(firstNumber) - double.parse(secondNumber))
-                .toString();
-            //operação -> multiplicação
-          } else if (operation == 'X') {
-            output = (double.parse(firstNumber) * double.parse(secondNumber))
-                .toString();
-          } //operação -> divisão
-          else if (operation == '/') {
-            output = (double.parse(firstNumber) / double.parse(secondNumber))
-                .toString();
-          }
-        }
-        double result = double.parse(output);
-
-        if (result % 1 == 0) {
-          output = result.toInt().toString();
-        } else {
-          output = output.toString();
-          print(output is double);
+      } else if (buttonText == "RESULT") {
+        if (firstNumber != '' && display != '' && operation != '') {
+          secondNumber = display;
+          _calculate();
+          firstNumber = '';
+          operation = '';
         }
       } else {
-        if (output == '0') {
-          output = buttonText;
+        if (display.length >= 10) return;
+
+        if (display == '0') {
+          display = buttonText;
         } else {
-          output += buttonText;
+          display += buttonText;
         }
       }
-
-      print(firstNumber);
-      print(secondNumber);
-      print(output);
-      print(operation);
     });
   }
 
-  void calculate() {}
-  void clear() {}
-  void setOperation(String op) {}
+  void _calculate() {
+    try {
+      double a = double.parse(firstNumber);
+      double b = double.parse(display.isEmpty ? '0' : display);
+      double result = 0;
+
+      if (operation == '+') {
+        result = a + b;
+      } else if (operation == '-') {
+        result = a - b;
+      } else if (operation == 'X') {
+        result = a * b;
+      } else if (operation == '/') {
+        if (b == 0) {
+          display = '';
+          return;
+        }
+        result = a / b;
+      } else if (operation == '%') {
+        result = a * b / 100;
+      }
+
+      display = result % 1 == 0 ? result.toInt().toString() : result.toString();
+    } catch (e) {
+      display = '';
+      return;
+    }
+  }
+
+  void deleteLastCharacter() {
+    setState(() {
+      if (display.length > 1) {
+        display = display.substring(0, display.length - 1);
+      } else {
+        display = '0';
+      }
+    });
+  }
 
   Widget buttonPressed(String buttonText) {
     return ElevatedButton(
-      onPressed: () {
-        onButtonTap(buttonText);
-      },
+      onPressed: () => onButtonTap(buttonText),
       child: Text(
         buttonText,
         style: GoogleFonts.jersey15(
@@ -146,18 +149,18 @@ class _CalculatorAppState extends State<CalculatorApp> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
                 width: 280,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(color: Color(0xffD56989), width: 4),
+                  border: Border.all(color: kPink, width: 4),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Center(
                   child: Text(
-                    output,
+                    display,
                     style: GoogleFonts.jersey15(
                       textStyle: TextStyle(fontSize: 50),
                     ),
@@ -167,46 +170,47 @@ class _CalculatorAppState extends State<CalculatorApp> {
             ],
           ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(width: 60, height: 60, child: buttonPressed('7')),
-              SizedBox(width: 60, height: 60, child: buttonPressed('8')),
-              SizedBox(width: 60, height: 60, child: buttonPressed('9')),
-              SizedBox(width: 60, height: 60, child: buttonPressed('-')),
+              SizedBox(child: buttonPressed('C')),
+              SizedBox(child: buttonPressed('DEL')),
+              SizedBox(child: buttonPressed('%')),
+              SizedBox(child: buttonPressed('/')),
             ],
           ),
-
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(width: 60, height: 60, child: buttonPressed('4')),
-              SizedBox(width: 60, height: 60, child: buttonPressed('5')),
-              SizedBox(width: 60, height: 60, child: buttonPressed('6')),
-              SizedBox(width: 60, height: 60, child: buttonPressed('+')),
+              SizedBox(child: buttonPressed('7')),
+              SizedBox(child: buttonPressed('8')),
+              SizedBox(child: buttonPressed('9')),
+              SizedBox(child: buttonPressed('-')),
             ],
           ),
-
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(width: 60, height: 60, child: buttonPressed('1')),
-              SizedBox(width: 60, height: 60, child: buttonPressed('2')),
-              SizedBox(width: 60, height: 60, child: buttonPressed('3')),
-              SizedBox(width: 60, height: 60, child: buttonPressed('X')),
+              SizedBox(child: buttonPressed('4')),
+              SizedBox(child: buttonPressed('5')),
+              SizedBox(child: buttonPressed('6')),
+              SizedBox(child: buttonPressed('+')),
             ],
           ),
-
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(width: 60, height: 60, child: buttonPressed('0')),
-              SizedBox(width: 60, height: 60, child: buttonPressed('.')),
-              SizedBox(width: 60, height: 60, child: buttonPressed('=')),
-              SizedBox(width: 60, height: 60, child: buttonPressed('C')),
+              SizedBox(child: buttonPressed('1')),
+              SizedBox(child: buttonPressed('2')),
+              SizedBox(child: buttonPressed('3')),
+              SizedBox(child: buttonPressed('X')),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(child: buttonPressed('0')),
+              SizedBox(child: buttonPressed('.')),
+              SizedBox(child: buttonPressed('RESULT')),
             ],
           ),
         ],
